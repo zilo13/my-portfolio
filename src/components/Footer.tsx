@@ -40,6 +40,7 @@ export default function Footer() {
               <a href="/services" className="text-gray-400 hover:text-accent transition-colors text-sm sm:text-base block">Services</a>
               <a href="/about" className="text-gray-400 hover:text-accent transition-colors text-sm sm:text-base block">About</a>
               <a href="/projects" className="text-gray-400 hover:text-accent transition-colors text-sm sm:text-base block">Projects</a>
+              <a href="/shop" className="text-gray-400 hover:text-accent transition-colors text-sm sm:text-base block">Shop</a>
               <a href="/contact" className="text-gray-400 hover:text-accent transition-colors text-sm sm:text-base block">Contact</a>
             </div>
           </div>
