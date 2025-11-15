@@ -21,7 +21,7 @@ This will install:
 npm run dev
 ```
 
-Your portfolio will be available at `http://localhost:5173`
+The portfolio will be available at `http://localhost:5173`
 
 ### 3. Build for Production
 ```bash
@@ -52,7 +52,7 @@ src/
 
 ## Features
 
-✅ **Fixed Navbar** - Logo, name, and navigation links
+✅ **Navbar** - Logo, name, and navigation links
 ✅ **Hero Section** - Animated background with CTA buttons
 ✅ **Featured Projects** - Project cards with tech badges
 ✅ **Testimonials** - Carousel slider with navigation
@@ -63,16 +63,9 @@ src/
 ✅ **Lazy Loading** - React lazy loading for pages, native lazy loading for images
 ✅ **Modern Design** - Dark theme with purple/blue gradients, glassmorphism
 
-## Customization
-
-### Update Personal Info
-- **Header Logo**: Replace `/logo.png` with your image
-- **Name**: Change "Yves Dev 237" throughout the code
-- **Colors**: Modify Tailwind classes (text-accent, bg-gradient-to-r, etc.)
-
 ### Update Content
 - **About**: Edit `src/pages/About.tsx` for biography and skills
-- **Services**: Update `src/pages/Services.tsx` with your services
+- **Services**: Update `src/pages/Services.tsx` with my services
 - **Projects**: Modify project data in component files
 - **Contact**: Update email and social links in `src/pages/Contact.tsx`
 
@@ -90,7 +83,7 @@ npm run build
 # Push dist/ folder to gh-pages branch
 ```
 
-### Vercel (Recommended)
+### Vercel
 ```bash
 npm install -g vercel
 vercel
