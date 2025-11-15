@@ -20,9 +20,9 @@ export default function FeaturedProjects() {
       id: 3,
       title: 'Task Management App',
       description: 'Collaborative workspace with drag-and-drop and team features',
-      tech: ['React', 'TypeScript' , 'tailwind'],
+      tech: ['React', 'TypeScript' , 'vite'],
       image: '✓',
-      link: '#'
+      link: 'https://task-manager-six-bice.vercel.app/'
     },
     {
       id: 4,
