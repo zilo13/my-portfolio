@@ -1,21 +1,50 @@
 import { useState } from 'react'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData , setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+    setError('')
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to a backend
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('https://formspree.io/f/mjkjwekb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      setSubmitted(true)
       setFormData({ name: '', email: '', message: '' })
-    }, 3000)
+      setTimeout(() => {
+        setSubmitted(false)
+      }, 3000)
+    } catch (err) {
+      const errorMsg = err instanceof Error ? err.message : 'Failed to send message. Please try again.'
+      setError(errorMsg)
+      console.error('Email error:', err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const socialLinks = [
@@ -102,10 +131,17 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full btn-primary"
+                  disabled={loading}
+                  className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {loading ? 'Sending...' : 'Send Message'}
                 </button>
+
+                {error && (
+                  <div className="p-3 sm:p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-center text-xs sm:text-sm">
+                    ✗ {error}
+                  </div>
+                )}
 
                 {submitted && (
                   <div className="p-3 sm:p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 text-center text-xs sm:text-sm">
